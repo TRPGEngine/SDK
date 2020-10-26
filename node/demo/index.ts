@@ -1,22 +1,20 @@
 import { TRPGClient } from '../';
 import inquirer from 'inquirer';
 
-const client = new TRPGClient('wss://trpgapi.moonrailgun.com');
-
-inquirer
-  .prompt([
+(async () => {
+  const params = await inquirer.prompt([
     {
       name: 'username',
     },
     {
       name: 'password',
     },
-  ])
-  .then(async (data) => {
-    const userInfo = await client.loginAccount(data.username, data.password);
+  ]);
+  const client = new TRPGClient('wss://127.0.0.1:23256');
 
-    console.log('userInfo', userInfo);
-  })
-  .then(() => {
-    client.disconnect();
-  });
+  const userInfo = await client.loginAccount(params.username, params.password);
+
+  console.log('userInfo', userInfo);
+
+  client.disconnect();
+})();
