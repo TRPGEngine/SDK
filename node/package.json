@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/TRPGEngine/SDK#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "md5": "^2.3.0",
     "socket.io-client": "^2.3.1"
   },
