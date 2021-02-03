@@ -1,6 +1,9 @@
 import io from 'socket.io-client';
 import md5 from 'md5';
-import { TRPGUserInfo } from './types';
+import { TRPGChatMsgPayload, TRPGUserInfo } from './types';
+import inquirer from 'inquirer';
+
+export { TRPGUserInfo };
 
 export class TRPGClient {
   private socket: SocketIOClient.Socket;
@@ -11,10 +14,30 @@ export class TRPGClient {
   }
 
   /**
-   * 登录机器人
+   * TODO
+   * 登录机器人账号
    */
   async login(appKey: string, appSecret: string) {
     // TODO
+  }
+
+  async loginAccountWithQuestion(): Promise<TRPGUserInfo> {
+    const params = await inquirer.prompt([
+      {
+        name: 'username',
+      },
+      {
+        name: 'password',
+      },
+    ]);
+
+    if (!params.username || !params.password) {
+      throw new Error('请输入用户名或密码');
+    }
+
+    const userInfo = await this.loginAccount(params.username, params.password);
+
+    return userInfo;
   }
 
   /**
@@ -54,9 +77,18 @@ export class TRPGClient {
    * @param eventName 事件名
    * @param cb 回调
    */
-  async watch(eventName: string, cb: (data: any) => void) {
+  watch(eventName: string, cb: (data: any) => void) {
     this.socket.on(eventName, (data) => {
       cb(data);
+    });
+  }
+
+  /**
+   * 增加接受消息事件监听
+   */
+  onReceiveMsg(cb: (payload: TRPGChatMsgPayload) => void) {
+    this.watch('chat::message', (payload) => {
+      cb(payload);
     });
   }
 

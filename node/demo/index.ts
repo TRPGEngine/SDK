@@ -10,7 +10,7 @@ import inquirer from 'inquirer';
       name: 'password',
     },
   ]);
-  const client = new TRPGClient('wss://127.0.0.1:23256');
+  const client = new TRPGClient('ws://127.0.0.1:23256');
 
   const userInfo = await client.loginAccount(params.username, params.password);
 
