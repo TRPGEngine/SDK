@@ -12,7 +12,7 @@ export async function handleGroupMessage(
 ) {
   const groupUUID = payload.group_uuid;
 
-  if (payload.message.startsWith('.st')) {
+  if (payload.message.startsWith('.sc')) {
     // 检测到st
     try {
       console.log(`[${groupUUID}] 检测到st命令: ${payload.message}`);
@@ -22,10 +22,21 @@ export async function handleGroupMessage(
         payload.group_uuid,
         payload.sender_uuid
       );
+
+      const san = Number(_.get(actorDetail, 'actor_info.SAN'));
+      if (!san) {
+        client.sendReplyGroupMessage(
+          payload,
+          '没有获取到san值, 请确定当前人物卡是正确的COC7人物卡'
+        );
+        return;
+      }
+      console.log('TODO: 未完成');
+      return;
       // console.log('当前理智:', _.get(actorDetail, ))
-      await client.setGroupActorInfo(actorDetail.uuid, {
-        data: _.get(actorDetail, 'actor_info.data') + '1',
-      });
+      // await client.setGroupActorInfo(actorDetail.uuid, {
+      //   data: Number(_.get(actorDetail, 'actor_info.SAN')) + 1,
+      // });
       console.log('数据追加完毕');
     } catch (err) {
       console.error('操作异常', err);

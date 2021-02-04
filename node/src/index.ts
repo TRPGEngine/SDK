@@ -12,6 +12,7 @@ export class TRPGClient {
   private socket: SocketIOClient.Socket;
   private request: AxiosInstance;
   private jwt: string = '';
+  public currentUserInfo: TRPGUserInfo;
   public isLogined = false;
 
   constructor(public url: string = 'wss://trpgapi.moonrailgun.com') {
@@ -84,7 +85,11 @@ export class TRPGClient {
       this.updateJWT();
     }, 1000 * 60 * 60 * 12);
 
-    return res.info;
+    const userInfo = res.info;
+
+    this.currentUserInfo = userInfo;
+
+    return userInfo;
   }
 
   async updateJWT() {
@@ -138,6 +143,27 @@ export class TRPGClient {
    */
   disconnect(): void {
     this.socket.disconnect();
+  }
+
+  /**
+   * 发送回复消息
+   * @param payload 要回复的消息体
+   * @param replyMsg 回复信息
+   */
+  async sendReplyGroupMessage(payload: TRPGChatMsgPayload, replyMsg: string) {
+    if (payload.is_group === true) {
+      // 团消息
+      this.send('chat::message', {
+        message: replyMsg,
+        sender_uuid: this.currentUserInfo.uuid,
+        to_uuid: null,
+        group_uuid: payload.group_uuid,
+        converse_uuid: payload.converse_uuid,
+        is_group: true,
+        is_public: true,
+        type: 'normal',
+      });
+    }
   }
 
   /**
