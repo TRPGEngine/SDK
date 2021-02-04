@@ -38,3 +38,15 @@ export interface TRPGChatMsgPayload {
   data: object;
   revoke?: boolean;
 }
+
+export interface TRPGGroupActor {
+  uuid: string;
+  actor_uuid: string;
+  actor_info: {};
+  actor_template_uuid: string;
+  name: string;
+  desc: string;
+  avatar: string;
+  passed: boolean;
+  enabled: boolean;
+}

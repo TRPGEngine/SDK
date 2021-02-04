@@ -29,11 +29,13 @@
   "homepage": "https://github.com/TRPGEngine/SDK#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "lodash": "^4.17.20",
     "md5": "^2.3.0",
     "socket.io-client": "^2.3.1"
   },
   "devDependencies": {
     "@types/inquirer": "^7.3.1",
+    "@types/lodash": "^4.14.168",
     "@types/md5": "^2.2.0",
     "@types/node": "^14.14.22",
     "@types/socket.io-client": "^1.4.34",

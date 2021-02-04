@@ -1,9 +1,10 @@
 import io from 'socket.io-client';
 import md5 from 'md5';
-import { TRPGChatMsgPayload, TRPGUserInfo } from './types';
+import { TRPGChatMsgPayload, TRPGGroupActor, TRPGUserInfo } from './types';
 import inquirer from 'inquirer';
 import axios, { AxiosInstance } from 'axios';
 import { URL } from 'url';
+import _ from 'lodash';
 
 export { TRPGChatMsgPayload, TRPGUserInfo };
 
@@ -137,5 +138,48 @@ export class TRPGClient {
    */
   disconnect(): void {
     this.socket.disconnect();
+  }
+
+  /**
+   * 获取团用户选择的团角色信息
+   * @param groupUUID 团UUID
+   * @param groupMemberUUID 团成员UUID
+   */
+  async getPlayerSelectedGroupActorInfo(
+    groupUUID: string,
+    groupMemberUUID: string
+  ): Promise<TRPGGroupActor> {
+    const res = await this.send('group::getPlayerSelectedGroupActor', {
+      groupUUID,
+      groupMemberUUID,
+    });
+
+    const selectedGroupActorUUID = _.get(res, [
+      'playerSelectedGroupActor',
+      'selectedGroupActorUUID',
+    ]);
+
+    const { data } = await this.request.get(
+      `/group/actor/detail/${selectedGroupActorUUID}`
+    );
+
+    return data.groupActor;
+  }
+
+  /**
+   * 设置团角色人物卡数据
+   * @param groupActorUUID 团角色UUID
+   * @param groupActorInfo 要修改的团角色信息
+   */
+  async setGroupActorInfo(
+    groupActorUUID: string,
+    groupActorInfo: any
+  ): Promise<TRPGGroupActor> {
+    const res = await this.send('group::updateGroupActorInfo', {
+      groupActorUUID,
+      groupActorInfo,
+    });
+
+    return res.groupActor;
   }
 }
