@@ -12,6 +12,10 @@
     "clean": "rm -rf esm lib",
     "prepublish": "yarn run build"
   },
+  "files": [
+    "esm",
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TRPGEngine/SDK.git"

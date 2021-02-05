@@ -50,3 +50,14 @@ export interface TRPGGroupActor {
   passed: boolean;
   enabled: boolean;
 }
+
+export interface TRPGDiceLog {
+  uuid: string;
+  sender_uuid: string;
+  to_uuid: string;
+  is_group: boolean;
+  is_private: boolean;
+  dice_request: string;
+  dice_expression: string;
+  dice_result: number;
+}

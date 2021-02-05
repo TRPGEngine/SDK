@@ -1,12 +1,19 @@
 import io from 'socket.io-client';
 import md5 from 'md5';
-import { TRPGChatMsgPayload, TRPGGroupActor, TRPGUserInfo } from './types';
+import {
+  TRPGChatMsgPayload,
+  TRPGDiceLog,
+  TRPGGroupActor,
+  TRPGUserInfo,
+} from './types';
 import inquirer from 'inquirer';
 import axios, { AxiosInstance } from 'axios';
 import { URL } from 'url';
 import _ from 'lodash';
+import { isValidString } from './utils';
 
-export { TRPGChatMsgPayload, TRPGUserInfo };
+export { TRPGChatMsgPayload, TRPGUserInfo, TRPGDiceLog };
+export { isValidString };
 
 export class TRPGClient {
   private socket: SocketIOClient.Socket;
@@ -143,6 +150,24 @@ export class TRPGClient {
    */
   disconnect(): void {
     this.socket.disconnect();
+  }
+
+  /**
+   * NOTICE: 仅支持群组中进行投骰
+   * 服务端投骰
+   */
+  async groupRoll(groupUUID: string, requestExp: string): Promise<TRPGDiceLog> {
+    // 在群组中roll点(roll点结果会记录到群组中)
+    const { log } = await this.send('dice:roll', {
+      sender_uuid: this.currentUserInfo.uuid,
+      to_uuid: groupUUID,
+      converse_uuid: groupUUID,
+      is_group: true,
+      is_private: false,
+      dice_request: requestExp,
+    });
+
+    return log;
   }
 
   /**
