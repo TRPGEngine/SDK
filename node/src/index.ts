@@ -158,7 +158,7 @@ export class TRPGClient {
    */
   async groupRoll(groupUUID: string, requestExp: string): Promise<TRPGDiceLog> {
     // 在群组中roll点(roll点结果会记录到群组中)
-    const { log } = await this.send('dice:roll', {
+    const { log } = await this.send('dice::roll', {
       sender_uuid: this.currentUserInfo.uuid,
       to_uuid: groupUUID,
       converse_uuid: groupUUID,
@@ -178,7 +178,7 @@ export class TRPGClient {
   async sendReplyGroupMessage(payload: TRPGChatMsgPayload, replyMsg: string) {
     if (payload.is_group === true) {
       // 团消息
-      this.send('chat::message', {
+      await this.send('chat::message', {
         message: replyMsg,
         sender_uuid: this.currentUserInfo.uuid,
         to_uuid: null,
