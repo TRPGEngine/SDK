@@ -1,0 +1,16 @@
+{
+  "name": "@trpgengine/coc-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "trpg",
+    "dice",
+    "coc"
+  ],
+  "author": "moonrailgun",
+  "license": "MIT"
+}
