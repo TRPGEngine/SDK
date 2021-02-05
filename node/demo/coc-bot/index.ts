@@ -1,4 +1,4 @@
-import { TRPGClient, TRPGUserInfo } from '../../';
+import { TRPGClient, TRPGUserInfo } from '@trpgengine/sdk-node';
 import config from './config.json';
 import { handleGroupMessage } from './handler';
 

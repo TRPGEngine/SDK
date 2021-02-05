@@ -4,7 +4,7 @@ import {
   TRPGClient,
   TRPGDiceLog,
   isValidString,
-} from '../../';
+} from '@trpgengine/sdk-node';
 
 // san check 格式
 const scRE = /^\.sc\s*?(\S*)?\/(\S*)?\s*?.*?$/;

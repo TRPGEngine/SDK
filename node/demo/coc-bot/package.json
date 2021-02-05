@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "build": "tsc",
+    "pkg:win": "pkg ./dist/index.js --targets win --out-path pkg",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -12,5 +14,12 @@
     "coc"
   ],
   "author": "moonrailgun",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@trpgengine/sdk-node": "^0.1.1"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.9",
+    "typescript": "^4.1.3"
+  }
 }
