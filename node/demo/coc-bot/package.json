@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node index.ts",
     "build": "tsc",
-    "pkg:win": "yarn build && pkg ./dist/index.js --targets win --out-path pkg",
+    "pkg:win": "yarn build && pkg ./dist/index.js --targets win --output ./pkg/coc-bot.exe",
+    "pkg:mac": "yarn build && pkg ./dist/index.js --targets mac --output ./pkg/coc-bot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -17,7 +18,7 @@
   "author": "moonrailgun",
   "license": "MIT",
   "dependencies": {
-    "@trpgengine/sdk-node": "^0.1.1",
+    "@trpgengine/sdk-node": "^0.1.2",
     "fs-extra": "^9.1.0"
   },
   "devDependencies": {

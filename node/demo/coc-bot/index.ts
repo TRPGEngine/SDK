@@ -2,7 +2,10 @@ import { TRPGClient, TRPGUserInfo } from '@trpgengine/sdk-node';
 import { handleGroupMessage } from './handler';
 import fs from 'fs-extra';
 
-const config = fs.readJsonSync('./config.json');
+const config =
+  fs.readJsonSync('./config.json', {
+    throws: false,
+  }) ?? {};
 
 async function main() {
   console.log('欢迎使用COC Bot for TRPG Engine..');
