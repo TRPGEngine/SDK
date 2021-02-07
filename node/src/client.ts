@@ -53,9 +53,11 @@ export class TRPGClient {
     const params = await inquirer.prompt([
       {
         name: 'username',
+        type: 'input',
       },
       {
         name: 'password',
+        type: 'password',
       },
     ]);
 
