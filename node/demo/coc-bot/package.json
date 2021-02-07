@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node index.ts",
     "build": "tsc",
-    "pkg": "yarn build && ts-node ./pkg.ts",
+    "pkg:win": "yarn build && nexe ./dist/index.js -o ./pkg/coc-bot -t windows-x64-14.15.1",
+    "pkg:mac": "yarn build && pkg ./dist/index.js --targets mac --output ./pkg/coc-bot",
     "upgrade": "yarn version --patch",
     "test": "../../node_modules/.bin/jest --config ../../jest.config.js"
   },
