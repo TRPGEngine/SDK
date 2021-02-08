@@ -3,6 +3,7 @@ import path from 'path';
 import packageJson from './package.json';
 import inquirer from 'inquirer';
 
+const name = path.basename(__dirname);
 const version = packageJson.version;
 const nodeVersion = '14.15.1';
 const arch = 'x64';
@@ -18,18 +19,15 @@ inquirer
     },
   ])
   .then(({ platforms }) => {
+    const platform = platforms;
+
     const compilerOptions: Partial<NexeOptions> = {
       input: './dist/index.js',
-      output: `./pkg/${path.basename(__dirname)}-v${version}`,
-      // targets: platforms.map((platform: string) => ({
-      //   version: nodeVersion,
-      //   platform,
-      //   arch: 'x64',
-      // })),
+      output: `./pkg/${name}-${platform}-${arch}-v${version}`,
       targets: [
         {
           version: nodeVersion,
-          platform: platforms,
+          platform,
           arch,
         },
       ],
@@ -40,5 +38,5 @@ inquirer
     return compile(compilerOptions);
   })
   .then(() => {
-    console.log('编译成功');
+    console.log('编译成功!');
   });
