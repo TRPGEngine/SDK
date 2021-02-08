@@ -67,7 +67,7 @@ export async function handleGroupMessage(
       console.log('正在投骰...');
 
       const diceRes = await client.groupRoll(groupUUID, '1d100');
-      console.log('判定结果:', diceRes);
+      console.log('判定结果:', diceRes.dice_expression);
       let diceRes2: TRPGDiceLog;
       let isSuccess = true;
       if (diceRes.dice_result < san) {
@@ -83,9 +83,9 @@ export async function handleGroupMessage(
       const newSan = san - diceRes2.dice_result;
       client.sendReplyGroupMessage(
         payload,
-        `${isSuccess ? '判定成功' : '判定失败'}, san check 结果: ${
+        `${isSuccess ? '判定成功' : '判定失败'}, SAN Check 结果: ${
           diceRes.dice_expression
-        }, 损失SAN值: ${diceRes2.dice_result}, 当前: ${newSan}`
+        }, 损失SAN值: ${diceRes2.dice_expression}, 当前: ${newSan}`
       );
 
       console.log('正在修改数据...');
