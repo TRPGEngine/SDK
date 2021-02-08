@@ -6,8 +6,8 @@
   "scripts": {
     "start": "ts-node index.ts",
     "build": "tsc",
-    "pkg:win": "yarn build && pkg ./dist/index.js --targets win --output ./pkg/coc-bot.exe",
-    "pkg:mac": "yarn build && pkg ./dist/index.js --targets mac --output ./pkg/coc-bot",
+    "pkg:win": "yarn build && nexe ./dist/index.js -o ./pkg/coc-bot -t windows-x64-14.15.1",
+    "pkg:mac": "yarn build && nexe ./dist/index.js -o ./pkg/coc-bot -t mac-x64-14.15.1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.6",
-    "pkg": "^4.4.9",
+    "nexe": "^4.0.0-beta.17",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
