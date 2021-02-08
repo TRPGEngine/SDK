@@ -76,7 +76,7 @@ export async function handleGroupMessage(
         isSuccess = true;
       } else {
         // 判定失败
-        diceRes2 = await client.groupRoll(groupUUID, successDiceExp);
+        diceRes2 = await client.groupRoll(groupUUID, failDiceExp);
         isSuccess = false;
       }
 
