@@ -21,6 +21,7 @@ export class TRPGClient {
   constructor(public url: string = 'wss://trpgapi.moonrailgun.com') {
     this.socket = io(url, {
       transports: ['websocket'],
+      autoConnect: false,
     });
 
     const urlObj = new URL(this.url);
@@ -141,6 +142,13 @@ export class TRPGClient {
     this.watch('chat::message', (payload) => {
       cb(payload);
     });
+  }
+
+  /**
+   * 打开链接
+   */
+  connect(): void {
+    this.socket.connect();
   }
 
   /**

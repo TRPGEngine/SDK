@@ -11,6 +11,7 @@ import inquirer from 'inquirer';
     },
   ]);
   const client = new TRPGClient('ws://127.0.0.1:23256');
+  client.connect();
 
   const userInfo = await client.loginAccount(params.username, params.password);
 

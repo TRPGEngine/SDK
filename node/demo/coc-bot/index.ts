@@ -14,6 +14,7 @@ async function main() {
   console.log('正在启动中...');
 
   const client = new TRPGClient(config.serverUrl);
+  client.connect();
 
   console.log('初始化完毕...');
 

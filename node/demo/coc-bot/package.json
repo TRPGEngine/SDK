@@ -18,7 +18,7 @@
   "author": "moonrailgun",
   "license": "MIT",
   "dependencies": {
-    "@trpgengine/sdk-node": "^0.1.2",
+    "@trpgengine/sdk-node": "^0.1.4",
     "fs-extra": "^9.1.0",
     "lodash": "^4.17.21"
   },
