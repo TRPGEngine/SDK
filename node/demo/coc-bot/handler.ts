@@ -5,9 +5,7 @@ import {
   TRPGDiceLog,
   isValidString,
 } from '@trpgengine/sdk-node';
-
-// san check 格式
-const scRE = /^\.sc\s*?(\S*)?\/(\S*)?\s*?.*?$/;
+import { scRE } from './regexp';
 
 const helpMsg = `目前支持指令:
 - .sc[成功损失]/[失败损失]`;
@@ -97,5 +95,9 @@ export async function handleGroupMessage(
       client.sendReplyGroupMessage(payload, '机器人处理异常, 请查看控制台');
       console.error('操作异常', err);
     }
+  }
+
+  if (message.startsWith('/ra')) {
+    // coc专用判定骰
   }
 }
