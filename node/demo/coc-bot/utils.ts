@@ -4,6 +4,8 @@ import _sum from 'lodash/sum';
 /**
  * 用于查找并计算COC7模板中技能对于
  * 根据专攻名找技能
+ *
+ * skillSubName 可以为空
  */
 export function calSkillSumWithSubName(
   actorData: object,
