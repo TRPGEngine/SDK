@@ -1,8 +1,3 @@
-import { TRPGChatMsgPayload, TRPGDiceLog, TRPGUserInfo } from './types';
-import _ from 'lodash';
-import { isValidString } from './utils';
-import { TRPGClient } from './client';
-
-export { TRPGChatMsgPayload, TRPGUserInfo, TRPGDiceLog };
-export { isValidString };
-export { TRPGClient };
+export { TRPGChatMsgPayload, TRPGDiceLog, TRPGUserInfo } from './types';
+export { isValidString } from './utils';
+export { TRPGClient } from './client';
