@@ -4,6 +4,7 @@ import {
   TRPGClient,
   TRPGDiceLog,
 } from '@trpgengine/sdk-node';
+import _ from 'lodash';
 import { scRE } from '../regexp';
 
 export async function handleSC(
@@ -18,8 +19,8 @@ export async function handleSC(
 
     // 解析消息
     const groups = message.match(scRE);
-    const successDiceExp = groups[1];
-    const failDiceExp = groups[2];
+    const successDiceExp = _.get(groups, [1]);
+    const failDiceExp = _.get(groups, [2]);
 
     if (!isValidString(successDiceExp) || !isValidString(failDiceExp)) {
       // 如果有一项不是一个合法字符串
@@ -52,7 +53,7 @@ export async function handleSC(
     console.log('判定结果:', diceRes.dice_expression);
     let diceRes2: TRPGDiceLog;
     let isSuccess = true;
-    if (diceRes.dice_result < san) {
+    if (diceRes.dice_result <= san) {
       // 判定成功
       diceRes2 = await client.groupRoll(groupUUID, successDiceExp);
       isSuccess = true;

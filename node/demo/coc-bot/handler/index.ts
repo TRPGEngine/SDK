@@ -1,9 +1,11 @@
 import _ from 'lodash';
 import { TRPGChatMsgPayload, TRPGClient } from '@trpgengine/sdk-node';
 import { handleSC } from './sc';
+import { handleRA } from './ra';
 
 const helpMsg = `目前支持指令:
-- .sc[成功损失]/[失败损失]`;
+- .sc[成功损失]/[失败损失]
+- /ra[技能名]( [专长])`;
 
 /**
  * 团消息处理
@@ -26,5 +28,6 @@ export async function handleGroupMessage(
     handleSC(client, payload);
   } else if (message.startsWith('/ra')) {
     // coc专用判定骰
+    handleRA(client, payload);
   }
 }
