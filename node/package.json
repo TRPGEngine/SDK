@@ -1,6 +1,6 @@
 {
   "name": "@trpgengine/sdk-node",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -10,8 +10,8 @@
     "build:esm": "tsc -p tsconfig.json --target ES5 --module ESNext --outDir esm",
     "build:cjs": "tsc -p tsconfig.json --target ES5 --module commonjs --outDir lib",
     "clean": "rm -rf esm lib",
-    "prepublish": "yarn run build",
-    "publish": "yarn publish"
+    "prerelease": "yarn run build",
+    "release": "yarn publish"
   },
   "files": [
     "esm",
