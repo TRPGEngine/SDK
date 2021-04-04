@@ -7,7 +7,7 @@
     "start": "ts-node index.ts",
     "build": "tsc",
     "pkg": "yarn build && ts-node ./pkg.ts",
-    "upgrade": "yarn version --patch",
+    "upgrade": "yarn version --patch --no-git-tag-version",
     "test": "../../node_modules/.bin/jest --config ../../jest.config.js"
   },
   "keywords": [
