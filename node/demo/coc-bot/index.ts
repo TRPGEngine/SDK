@@ -30,7 +30,7 @@ async function main() {
       userInfo = await client.loginAccountWithQuestion();
     }
 
-    console.log('登录成功:', `${userInfo.username}[${userInfo.uuid}]`);
+    console.log('登录成功: 当前用户', `${userInfo.username}[${userInfo.uuid}]`);
 
     console.log('开始监听所有的消息, 在团中输入 /help 查看所有指令');
     client.onReceiveMsg(async (payload) => {

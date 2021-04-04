@@ -18,6 +18,10 @@ export class TRPGClient {
   public currentUserInfo: TRPGUserInfo;
   public isLogined = false;
 
+  /**
+   * 初始化机器人客户端
+   * @param url 默认为 `wss://trpgapi.moonrailgun.com`
+   */
   constructor(public url: string = 'wss://trpgapi.moonrailgun.com') {
     this.socket = io(url, {
       transports: ['websocket'],
