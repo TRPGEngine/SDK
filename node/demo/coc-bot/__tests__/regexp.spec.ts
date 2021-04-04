@@ -1,4 +1,4 @@
-import { raRE, scRE } from '../regexp';
+import { rabpRE, raRE, scRE } from '../regexp';
 
 describe('regexp', () => {
   describe('match scRE', () => {
@@ -30,6 +30,20 @@ describe('regexp', () => {
       ['/ra取悦  Any', ['取悦', undefined]],
     ])('%p', (input: string, groups: string[]) => {
       const [_, ...matches] = input.match(raRE);
+
+      expect(matches).toEqual(groups);
+    });
+  });
+
+  describe('match rabpRE', () => {
+    test.each([
+      ['/rab5# 斗殴 格斗 50', ['5#', '斗殴', '格斗', ' 50']],
+      ['/rab5# 斗殴 格斗', ['5#', '斗殴', '格斗', '']],
+      ['/rab5# 取悦', ['5#', '取悦', undefined, '']],
+      ['/rab 取悦 50', [undefined, '取悦', undefined, '50']],
+      ['/rab 取悦', [undefined, '取悦', undefined, '']],
+    ])('%p', (input: string, groups: string[]) => {
+      const [_, ...matches] = input.match(rabpRE);
 
       expect(matches).toEqual(groups);
     });
