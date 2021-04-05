@@ -23,5 +23,6 @@ export const raRE = /^\/ra\s*?([^\s\-:]+)[\s\-:]?([^\s\-:]*)?\s*?.*?$/;
  * - /rab5# 取悦
  * - /rab 取悦 50
  * - /rab 取悦
+ * - /rab 50
  */
-export const rabpRE = /^\/ra[bp](\d*?#)?\s*?([^\s\-:]+)[\s\-:]?([^\d\s\-:]*)?(.*?)$/;
+export const rabpRE = /^\/ra[bp](\d*?#)?\s*?([^\d\s\-:]*)[\s\-:]?([^\d\s\-:]*)?(.*?)$/;
