@@ -13,7 +13,7 @@ export function generateMsgPayload(
     to_uuid: 'to',
     converse_uuid: 'converse',
     group_uuid: 'group',
-    type: 'type',
+    type: 'normal',
     is_public: true,
     is_group: true,
     date: '2020-10-10',
