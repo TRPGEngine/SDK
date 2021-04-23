@@ -29,3 +29,12 @@ export function calSkillSumWithSubName(
 
   return _sum([0, _get(result, [1, '基础']), _get(result, [1, 'addedPoint'])]);
 }
+
+// 输入5# 返回5
+export function parseRollCount(input: string): number {
+  if (/^(\d+)#$/.test(input)) {
+    return Number(input.substr(0, input.length - 1));
+  } else {
+    return Number(input);
+  }
+}

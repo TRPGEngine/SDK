@@ -1,4 +1,4 @@
-import { calSkillSumWithSubName } from '../utils';
+import { calSkillSumWithSubName, parseRollCount } from '../utils';
 
 describe('calSkillSumWithSubName', () => {
   const testActorData: any = {
@@ -134,5 +134,14 @@ describe('calSkillSumWithSubName', () => {
     ['取悦', null, 15],
   ])('%s:%s => %d', (name: string, subName: string, sum: number) => {
     expect(calSkillSumWithSubName(testActorData, name, subName)).toBe(sum);
+  });
+});
+
+describe('parseRollCount', () => {
+  test.each([
+    ['5#', 5],
+    ['5', 5],
+  ])('%s', (input, output) => {
+    expect(parseRollCount(input)).toBe(output);
   });
 });
