@@ -1,3 +1,3 @@
 export { TRPGChatMsgPayload, TRPGDiceLog, TRPGUserInfo } from './types';
-export { isValidString } from './utils';
+export { isValidString, isValidNumber } from './utils';
 export { TRPGClient } from './client';
