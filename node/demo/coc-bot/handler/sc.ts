@@ -15,6 +15,7 @@ export async function handleSC(
   const message = payload.message;
 
   try {
+    console.log('----------------------');
     console.log(`[${groupUUID}] 检测到sc命令: ${message}`);
 
     // 解析消息
