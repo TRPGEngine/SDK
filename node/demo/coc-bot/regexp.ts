@@ -23,6 +23,6 @@ export const raRE = /^\/ra\s*?([^\s\-:]+)[\s\-:]?([^\s\-:]*)?\s*?.*?$/;
  * - /rab5# 取悦
  * - /rab 取悦 50
  * - /rab 取悦
- * - /rab 50
  */
-export const rabpRE = /^\/ra[bp](\d*?#)?\s*?([^\d\s\-:]*)[\s\-:]?([^\d\s\-:]*)?(.*?)$/;
+// export const rabpRE = /^\/ra[bp](\d*?#)?\s*?([^\d\s\-:]*)[\s\-:]?([^\d\s\-:]*)?(.*?)$/; // TODO: 这个正则只能处理/rab 50 的情况, 其他情况不正确。先移除该情况
+export const rabpRE = /^\/ra[bp](\d*?#)?\s*?([^\d\s\-:]+)[\s\-:]?([^\d\s\-:]*)?(.*?)$/;
