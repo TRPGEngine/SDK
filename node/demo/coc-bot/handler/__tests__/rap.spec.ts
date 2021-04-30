@@ -1,11 +1,11 @@
 import { MockedClient } from '../../tests/MockedClient';
 import { generateMsgPayload } from '../../tests/utils';
-import { handleRAB } from '../rab';
+import { handleRAP } from '../rap';
 
 describe('rab', () => {
   test('test', async () => {
     const client = new MockedClient();
-    await handleRAB(
+    await handleRAP(
       client,
       generateMsgPayload({
         message: '/rap5# 取悦 50',
@@ -16,7 +16,7 @@ describe('rab', () => {
     expect(calls.length).toBe(1);
     const replyMessage = calls[0][1];
     expect(replyMessage).toMatch(
-      /^B5=\d*?\[奖励骰: .*?\]=.*?\/50, 判定(成功|失败)?$/
+      /^P5=\d*?\[惩罚骰: .*?\]=.*?\/50, 判定(成功|失败)?$/
     );
   });
 });
