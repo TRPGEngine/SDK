@@ -3,12 +3,12 @@ import { generateMsgPayload } from '../../tests/utils';
 import { handleRAB } from '../rab';
 
 describe('rab', () => {
-  test('test', async () => {
+  test.each(['/rap5# 取悦 50', '/rap1# 取悦 50'])('%s', async (command) => {
     const client = new MockedClient();
     await handleRAB(
       client,
       generateMsgPayload({
-        message: '/rap5# 取悦 50',
+        message: command,
       })
     );
 
@@ -16,7 +16,7 @@ describe('rab', () => {
     expect(calls.length).toBe(1);
     const replyMessage = calls[0][1];
     expect(replyMessage).toMatch(
-      /^B5=\d*?\[奖励骰: .*?\]=.*?\/50, 判定(成功|失败)?$/
+      /^B\d=\d*?\[奖励骰: .*?\]=.*?\/50, 判定(成功|失败)?$/
     );
   });
 });
