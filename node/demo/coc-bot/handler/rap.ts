@@ -1,5 +1,5 @@
 /**
- * 奖励骰
+ * 惩罚骰
  */
 
 import {
@@ -28,6 +28,8 @@ export async function handleRAP(
     const skillName = _.get(groups, [2]);
     const skillSubName = _.get(groups, [3]);
     const forceRAValue = Number(_.get(groups, [4]));
+
+    console.log('输入参数:', count, skillName, skillSubName, forceRAValue);
 
     if (!isValidString(skillName)) {
       // 如果有一项不是一个合法字符串

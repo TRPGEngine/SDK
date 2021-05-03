@@ -12,7 +12,7 @@ export function calSkillSumWithSubName(
   skillName: string,
   skillSubName?: string
 ): number {
-  const result = Object.entries(actorData)
+  const result = Object.entries(actorData ?? {})
     // 过滤出所有技能数据
     .filter(([key]) => key.startsWith('skill-'))
     .find(([key, value]) => {

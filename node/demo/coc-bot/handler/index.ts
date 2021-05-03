@@ -28,14 +28,14 @@ export async function handleGroupMessage(
   if (message.startsWith('.sc')) {
     // 检测到st
     handleSC(client, payload);
-  } else if (message.startsWith('/ra')) {
-    // coc专用判定骰
-    handleRA(client, payload);
   } else if (message.startsWith('/rab')) {
     // coc奖励骰
     handleRAB(client, payload);
   } else if (message.startsWith('/rap')) {
-    // coc奖励骰
+    // coc惩罚骰
     handleRAP(client, payload);
+  } else if (message.startsWith('/ra')) {
+    // coc专用判定骰
+    handleRA(client, payload);
   }
 }
