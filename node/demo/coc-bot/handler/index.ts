@@ -5,9 +5,12 @@ import { handleRA } from './ra';
 import { handleRAB } from './rab';
 import { handleRAP } from './rap';
 
-const helpMsg = `目前支持指令:
+const helpMsg = `[url=https://trpgdoc.moonrailgun.com/docs/robot/coc7]完整文档[/url]
+目前支持指令:
 - .sc[成功损失]/[失败损失]
-- /ra[技能名]( [专长])`;
+- /ra[技能名]( [专长])
+- /rab(次数#) [技能名]( [专长]) (判定点数)
+- /rap(次数#) [技能名]( [专长]) (判定点数)`;
 
 /**
  * 团消息处理
